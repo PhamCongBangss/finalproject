@@ -1,0 +1,80 @@
+.container {
+  padding: 1rem;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 87vh;
+  overflow-y: auto;
+  align-items: center;
+  padding-top: 80px;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.orderCard {
+  width: 80%;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  background-color: #2a2a2a;
+  margin-bottom: 3rem;
+}
+
+.orderInfo {
+  margin-bottom: 12px;
+}
+
+.section {
+  margin-bottom: 0.5rem;
+}
+
+.products {
+  margin-top: 1rem;
+}
+
+.productList {
+  list-style-type: disc;
+}
+
+.productItem {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  justify-content: space-between;
+  gap: 1rem;
+  background-color: #1e1e1e4d;
+  padding: 0.75rem;
+  border-radius: 8px;
+}
+
+.img {
+  height: 60px;
+  width: 60px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.productDetails {
+  display: flex;
+  gap: 20px;
+}
+
+.productInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+}
+
+.totalPrice {
+  margin-top: 1rem;
+  padding-top: 0.5rem;
+  font-size: 20px;
+  text-align: right;
+}

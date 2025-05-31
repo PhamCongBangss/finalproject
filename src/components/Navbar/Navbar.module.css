@@ -1,0 +1,204 @@
+.navbarLogoImg {
+  height: 50px;
+  width: 100px;
+  object-fit: cover;
+}
+
+.navbar {
+  z-index: 1000;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background-color: #111111;
+  color: white;
+  padding: 16px 32px;
+  display: grid;
+  grid-template-columns: 1fr 7fr;
+  align-items: center;
+  font-family: sans-serif;
+}
+
+.link {
+  color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 8px 30px;
+  transition: color 0.3s ease;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.link:hover {
+  background-color: #2c2c2c;
+}
+
+.navbarInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbarSelect {
+  display: flex;
+  gap: 50px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.navbarSetting {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.navbarLang {
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.navbarLang:hover {
+  background-color: #444;
+}
+
+.langBtn {
+  position: relative;
+  display: inline-block;
+}
+
+.langBtn:hover .lang-dropdown {
+  display: block;
+}
+
+.langDropdown {
+  text-decoration: none;
+  position: absolute;
+  left: -30px;
+  background-color: #1a1a1a;
+  border: 1px solid #444;
+  border-radius: 6px;
+  min-width: 180px;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.langDropdown .lang {
+  cursor: pointer;
+  padding: 20px 12px;
+  border-radius: 6px;
+}
+
+.langDropdown .lang:hover {
+  background-color: #ffd900a1;
+  color: black;
+}
+
+.loginLink {
+  text-decoration: none;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.user {
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+
+.userIcon {
+  padding: 5px;
+}
+
+.userIcon:hover {
+  background-color: #444;
+}
+
+.cartIcon {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.cartIcon:hover {
+  background-color: #444;
+}
+
+.usergDropdown {
+  text-decoration: none;
+  position: absolute;
+  top: 40px;
+  right: 0px;
+  background-color: #1a1a1a;
+  border: 1px solid #444;
+  border-radius: 6px;
+  min-width: 180px;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.info {
+  cursor: pointer;
+  padding: 20px 12px;
+  border-radius: 6px;
+
+  color: white;
+}
+
+.logout {
+  cursor: pointer;
+  padding: 20px 12px;
+  border-radius: 6px;
+}
+
+.info:hover {
+  background-color: #ffd900a1;
+  color: black;
+}
+
+.logout:hover {
+  background-color: #ffd900a1;
+  color: black;
+}
+
+.infoLink {
+  text-decoration: none;
+}
+
+.avtImg {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+.cart {
+  position: relative;
+  cursor: pointer;
+}
+
+.quantity {
+  top: -5px;
+  right: -5px;
+  position: absolute;
+  background-color: #ffa500;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  border-radius: 50%;
+}
+
+.isactive {
+  color: #ffb347; /* hoặc màu nổi bật */
+  font-weight: bold;
+  text-shadow: 0 0 8px rgba(255, 179, 71, 0.6);
+}

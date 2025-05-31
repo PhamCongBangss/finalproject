@@ -1,0 +1,170 @@
+.checkOutContainer {
+  margin-top: 84px;
+  padding: 40px;
+  min-height: 88vh;
+  font-family: "Roboto", sans-serif;
+  background: radial-gradient(circle at top center, #2a2a2a 0%, #121212 100%);
+  display: grid;
+  grid-template-columns: 6fr 4fr;
+  gap: 180px;
+}
+
+.title {
+  font-size: 2rem;
+  color: #ff7f00;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.cartItem {
+  display: grid;
+  grid-template-columns: 30px 100px 250px 150px 150px 50px;
+  align-items: center;
+  gap: 20px;
+  row-gap: 40px;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+  margin-top: 20px;
+}
+
+.itemImg {
+  height: 80px;
+  width: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #555;
+  padding: 4px;
+}
+
+.size {
+  font-style: italic;
+  color: #ccc;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.itemDetail {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.itemName {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #ff9900;
+}
+
+.itemSize {
+  font-size: 0.9rem;
+  color: #bbbbbb;
+}
+
+.quantityControls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.qtyBtn {
+  width: 28px;
+  height: 28px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  background-color: #e65c00;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+}
+
+.qtyBtn:hover {
+  background-color: #e67600;
+}
+
+.qty {
+  font-size: 16px;
+  min-width: 24px;
+  text-align: center;
+}
+
+.price {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.deteleBtn {
+  background: none;
+  border: none;
+  color: #e65c00;
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+cartInfo {
+  display: flex;
+  justify-content: center;
+}
+
+.total {
+  font-size: 20px;
+  color: #fff;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  font-weight: bold;
+  text-align: end;
+}
+
+.shipContainer {
+}
+
+.inputInfo {
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  color: #fff;
+  padding: 10px;
+  width: 400px;
+  border-radius: 6px;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.inputInfo:focus {
+  outline: none;
+  border-color: #777;
+  background-color: #333;
+}
+
+.optionTitle {
+  font-size: 20pxpx;
+  margin-bottom: 8px;
+}
+
+.address {
+  height: 100px;
+}
+
+.checkOutBtn {
+  text-align: end;
+  margin-right: 30px;
+}
+
+.checkOutBtns {
+  width: 95%;
+  background-color: #ff6a00;
+  color: #fff;
+  border: none;
+  padding: 14px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 10px rgba(255, 106, 0, 0.4);
+}

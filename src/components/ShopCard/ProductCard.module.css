@@ -1,0 +1,78 @@
+.card {
+  background: linear-gradient(135deg, #1f123f, #803f50, #b66a50);
+  border-radius: 16px;
+  overflow: hidden;
+  width: 340px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.card:hover {
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-10px);
+}
+
+.imageWrapper {
+  position: relative;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  margin-top: 20px;
+}
+
+.tag {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: #f97316;
+  color: white;
+  font-size: 14px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.heartButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.heartIcon {
+  color: #ccc;
+  font-size: 30px;
+  transition: color 0.3s;
+}
+
+.heartIconActive {
+  color: #f97316;
+  font-size: 30px;
+  transition: color 0.3s;
+}
+
+.content {
+  padding: 16px;
+}
+
+.name {
+  font-size: 20px;
+  font-weight: 600;
+  color: #f9fafb;
+  margin-bottom: 8px;
+  text-shadow: 0 0 5px #ff9900;
+}
+
+.price {
+  color: #ea580c;
+  font-weight: 700;
+  font-size: 20px;
+}

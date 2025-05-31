@@ -1,0 +1,54 @@
+.changePassContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputInfo {
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  color: #fff;
+  padding: 10px;
+  width: 300px;
+  border-radius: 6px;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.inputInfo:focus {
+  outline: none;
+  border-color: #777;
+  background-color: #333;
+}
+
+.optionTitle {
+  font-size: 20pxpx;
+  margin-bottom: 8px;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.changeBtn {
+  padding: 10px 24px;
+  background-color: #3a3b3c; /* Xám đậm */
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+  margin-top: 30px;
+}
+
+.changeBtn:hover {
+  background-color: #ffd900a1;
+  color: black;
+}

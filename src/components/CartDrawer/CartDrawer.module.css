@@ -1,0 +1,168 @@
+.drawer {
+  position: fixed;
+  top: 0;
+  right: -10px;
+  width: 380px;
+  height: 100%;
+  background-color: #1a1a1a;
+  box-shadow: -4px 0 12px rgba(255, 145, 0, 0.3);
+  transform: translateX(100%);
+  transition: transform 0.4s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.drawerOpen {
+  transform: translateX(0);
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+}
+
+.overlayHidden {
+  display: none;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  font-size: 40px;
+  color: #ff9900;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.content {
+  flex-grow: 1;
+  overflow-y: auto;
+  color: #fff;
+}
+
+.empty {
+  text-align: center;
+  color: #999;
+  padding: 40px 0;
+}
+
+.item {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #333;
+  padding-bottom: 12px;
+}
+
+.itemImage {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid #555;
+}
+
+.itemInfo {
+  flex: 1;
+  font-size: 14px;
+  color: #fff;
+}
+
+.itemInfo strong {
+  font-size: 16px;
+  color: #ff9900;
+}
+
+.checkoutBtn {
+  width: 100%;
+  background-color: #ff6a00;
+  color: #fff;
+  border: none;
+  padding: 14px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 10px rgba(255, 106, 0, 0.4);
+}
+
+.checkoutBtn:hover {
+  background-color: #e65c00;
+}
+
+.quantityControls {
+  display: flex;
+  align-items: center;
+  margin-top: 4px;
+  gap: 5px;
+}
+
+.qtyBtn {
+  width: 28px;
+  height: 28px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  background-color: #e65c00;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.qtyBtn:hover {
+  background-color: #e67600;
+}
+
+.qty {
+  font-size: 16px;
+  min-width: 24px;
+  text-align: center;
+}
+
+.price {
+  color: #fff;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.size {
+  font-style: italic;
+  color: #ccc;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.deteleBtn {
+  background: none;
+  border: none;
+  color: #e65c00;
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: 20px;
+  margin-top: 5px;
+}
+
+.total {
+  font-size: 20px;
+  color: #fff;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  font-weight: bold;
+}

@@ -1,0 +1,108 @@
+.signInPage {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 3fr 7fr;
+  font-family: sans-serif;
+}
+
+.signInContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  color: black;
+  justify-content: center;
+  align-items: center;
+}
+
+.signIn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.signInHeader {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.imgBackground {
+  background-image: url("../../../public/loginbackground.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.infoField {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.inputField {
+  width: 300px;
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.btnSignIn {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  border: none;
+  background-color: #d32f2f;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btnSignIn:hover {
+  background-color: #b71c1c;
+  transform: scale(1.05);
+}
+
+.loginText {
+  margin-top: 20px;
+  font-size: 15px;
+  color: #444;
+}
+
+.loginNow {
+  color: #d32f2f;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.loginNow:hover {
+  color: #b71c1c;
+  text-decoration: underline;
+}
+
+.password {
+  position: relative;
+}
+
+.eye {
+  cursor: pointer;
+  color: #666;
+  position: absolute;
+  right: 20px;
+  top: 40%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #666;
+}

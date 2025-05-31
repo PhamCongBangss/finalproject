@@ -1,0 +1,46 @@
+.champion-card {
+  position: relative;
+  border: 2px solid #444;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.champion-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+}
+
+.champion-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.champion-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top: 2px solid rgb(147, 115, 65);
+  color: rgb(147, 115, 65);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.champion-overlay .title {
+  color: #c4b998;
+  letter-spacing: 1px;
+  font-size: 14px;
+  margin-top: 10px;
+}

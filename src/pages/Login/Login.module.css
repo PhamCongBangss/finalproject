@@ -1,0 +1,155 @@
+.loginPage {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 3fr 7fr;
+  font-family: sans-serif;
+}
+
+.imgBackground {
+  background-image: url("../../../public/loginbackground.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  color: black;
+  justify-content: center;
+  align-items: center;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginHeader {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.username {
+  margin-bottom: 10px;
+}
+
+.username input {
+  width: 300px;
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.password input {
+  width: 300px;
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+input:focus {
+  border-color: #d32f2f;
+  outline: none;
+}
+
+.btnLogin {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  border: none;
+  background-color: #d32f2f;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btnLogin:hover {
+  background-color: #b71c1c;
+  transform: scale(1.05);
+}
+
+.registerText {
+  margin-top: 20px;
+  font-size: 15px;
+  color: #444;
+}
+
+.registerNow {
+  color: #d32f2f;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.registerNow:hover {
+  color: #b71c1c;
+  text-decoration: underline;
+}
+
+.password {
+  position: relative;
+}
+
+.eye {
+  cursor: pointer;
+  color: #666;
+  position: absolute;
+  right: 20px;
+  top: 40%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #666;
+}
+
+.checkboxContainer {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  align-self: flex-start;
+}
+
+.checkboxContainer input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.checkboxContainer input[type="checkbox"]:checked {
+  background-color: #d32f2f;
+  border-color: #d32f2f;
+}
+
+.checkboxContainer input[type="checkbox"]::after {
+  content: "✔";
+  position: absolute;
+  top: -2px;
+  left: 2px;
+  font-size: 14px;
+  color: white;
+  display: none;
+}
+
+.checkboxContainer input[type="checkbox"]:checked::after {
+  display: block;
+}

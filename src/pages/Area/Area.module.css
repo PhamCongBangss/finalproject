@@ -1,0 +1,53 @@
+.areaContainer {
+  margin-top: 60px;
+  background: radial-gradient(circle at top center, #2a2a2a 0%, #121212 100%);
+  font-family: "Roboto", sans-serif;
+  padding: 50px 50px;
+}
+
+.banner {
+  margin: 50px auto;
+  padding: 200px;
+  position: relative;
+  width: 95%;
+  height: 500px;
+  background: linear-gradient(135deg, #1e1e1e, #2e2e2e);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.backgroundImage {
+  opacity: 0.8;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  object-fit: cover;
+}
+
+.overlay {
+  text-align: center;
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  z-index: 1;
+  position: relative;
+}
+
+.overlay p {
+  text-transform: uppercase;
+  font-size: 70px;
+  font-weight: 700;
+  color: #e3b255f6;
+  letter-spacing: 1px;
+  padding: 0 10px;
+  line-height: 1.4;
+}
