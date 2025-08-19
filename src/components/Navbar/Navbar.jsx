@@ -98,7 +98,7 @@ function Navbar() {
           </NavLink>
 
           <NavLink
-            to="/area"
+            to="/region"
             className={({ isActive }) =>
               `${styles.link} ${isActive ? styles.isactive : ""}`
             }
@@ -162,7 +162,11 @@ function Navbar() {
                 onClick={handleOpenUSer}
                 className={styles.user}
               >
-                <img className={styles.avtImg} src={user.avatar} alt="" />
+                <img
+                  className={styles.avtImg}
+                  src={`http://localhost:3001/img/users/${user.avatar}`}
+                  alt=""
+                />
                 <p>{user.username}</p>
 
                 {isOpenUser && (

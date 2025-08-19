@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "./ChangePass.module.css";
 import { useAuth } from "../../context/AuthContext";
 import Toast from "../../components/Toast/Toast";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 function ChangePass() {
   const [toast, setToast] = useState({
@@ -18,6 +19,10 @@ function ChangePass() {
     password: "",
     passwordCheck: "",
   });
+
+  const [showPassword1, setShowPassword1] = useState(false);
+  const [showPassword2, setShowPassword2] = useState(false);
+  const [showPassword3, setShowPassword3] = useState(false);
 
   function handleChangPass(e) {
     e.preventDefault();
@@ -61,7 +66,7 @@ function ChangePass() {
         <p className={styles.optionTitle}>Mật khẩu cũ</p>
         <input
           className={styles.inputInfo}
-          type="password"
+          type={showPassword1 ? "text" : "password"}
           value={oldPassword}
           onChange={(e) => {
             setOldPassword(e.target.value);
@@ -71,6 +76,13 @@ function ChangePass() {
             }));
           }}
         />
+
+        <span
+          onClick={() => setShowPassword1(!showPassword1)}
+          className={styles.eye}
+        >
+          {showPassword1 ? <FaEyeSlash /> : <FaEye />}
+        </span>
 
         {errors.oldPassword && (
           <p
@@ -90,7 +102,7 @@ function ChangePass() {
         <p className={styles.optionTitle}>Mật khẩu mới</p>
         <input
           className={styles.inputInfo}
-          type="password"
+          type={showPassword2 ? "text" : "password"}
           value={password}
           onChange={(e) => {
             const newPass = e.target.value;
@@ -107,6 +119,13 @@ function ChangePass() {
             }));
           }}
         />
+
+        <span
+          onClick={() => setShowPassword2(!showPassword2)}
+          className={styles.eye}
+        >
+          {showPassword2 ? <FaEyeSlash /> : <FaEye />}
+        </span>
 
         {errors.password && (
           <p
@@ -126,7 +145,7 @@ function ChangePass() {
         <p className={styles.optionTitle}>Nhập lại mật khẩu mới</p>
         <input
           className={styles.inputInfo}
-          type="password"
+          type={showPassword3 ? "text" : "password"}
           value={passwordCheck}
           onChange={(e) => {
             setPasswordCheck(e.target.value);
@@ -138,6 +157,12 @@ function ChangePass() {
             }));
           }}
         />
+        <span
+          onClick={() => setShowPassword3(!showPassword3)}
+          className={styles.eye}
+        >
+          {showPassword3 ? <FaEyeSlash /> : <FaEye />}
+        </span>
 
         {errors.passwordCheck && (
           <p

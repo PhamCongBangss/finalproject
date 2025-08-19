@@ -78,3 +78,33 @@
   font-size: 20px;
   text-align: right;
 }
+
+/* OrderHistory.module.css */
+.status {
+  font-weight: bold;
+  padding: 2px 6px;
+  border: 1px solid;
+  border-radius: 4px;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.pending {
+  color: orange;
+  border-color: orange;
+}
+
+.delivering {
+  color: goldenrod;
+  border-color: goldenrod;
+}
+
+.shipped {
+  color: green;
+  border-color: green;
+}
+
+.cancelled {
+  color: red;
+  border-color: red;
+}

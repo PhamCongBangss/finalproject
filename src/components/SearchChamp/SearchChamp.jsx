@@ -1,5 +1,6 @@
 import "./SearchChamp.css";
 import SortChamp from "../SortChamp/SortChamp";
+import { useLang } from "../../context/LanguageContext";
 
 function SearchChamp({
   handleSearchChamp,
@@ -10,6 +11,7 @@ function SearchChamp({
   handleOpenSort,
   handleCloseSort,
 }) {
+  const { lang } = useLang();
   return (
     <div className="search-filter-container">
       <div className="search-container">
@@ -21,7 +23,7 @@ function SearchChamp({
         <input
           value={searchChamp}
           type="text"
-          placeholder="Tim tuong"
+          placeholder={lang === "vi" ? "Tìm tướng" : "Find Champion"}
           className="search-input"
           onChange={handleSearchChamp}
         />

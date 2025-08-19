@@ -4,8 +4,10 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import Toast from "../../components/Toast/Toast";
+import usePageTitleByPath from "../../utils/usePageTitleByPath";
 
 function SignUp() {
+  usePageTitleByPath();
   const [toast, setToast] = useState({
     show: false,
     message: "",
@@ -17,7 +19,7 @@ function SignUp() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [passwordCheck, setPasswordCheck] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
   const [errors, setErrors] = useState({
     email: "",
     username: "",
@@ -31,7 +33,7 @@ function SignUp() {
   }
   const navigate = useNavigate();
 
-  function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const newErrors = {
@@ -53,9 +55,9 @@ function SignUp() {
       return;
     }
 
-    if (password !== passwordCheck) return;
+    if (password !== passwordConfirm) return;
 
-    const success = signup(email, username, password);
+    const success = await signup(email, username, password, passwordConfirm);
     if (!success) {
       setErrors((prev) => ({
         ...prev,
@@ -72,7 +74,7 @@ function SignUp() {
         navigate("/login");
       }, 1000);
     }
-  }
+  };
 
   return (
     <>
@@ -150,7 +152,7 @@ function SignUp() {
                       ...prev,
                       password: "",
                       passwordCheck:
-                        passwordCheck === e.target.value
+                        passwordConfirm === e.target.value
                           ? ""
                           : "Mật khẩu không trùng khớp",
                     }));
@@ -184,9 +186,9 @@ function SignUp() {
 
               <div className={styles.password}>
                 <input
-                  value={passwordCheck}
+                  value={passwordConfirm}
                   onChange={(e) => {
-                    setPasswordCheck(e.target.value);
+                    setPasswordConfirm(e.target.value);
                     if (!password)
                       setErrors((prev) => ({
                         ...prev,

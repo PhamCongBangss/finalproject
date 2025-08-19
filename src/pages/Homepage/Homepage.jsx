@@ -2,11 +2,24 @@ import { Flame } from "lucide-react";
 import Navbar from "../../components/Navbar/Navbar";
 import styles from "./Homepage.module.css";
 import { Link } from "react-router-dom";
+import usePageTitleByPath from "../../utils/usePageTitleByPath";
+import Test from "../../components/Test/Test";
+import { useEffect } from "react";
+
+import { useAuth } from "../../context/AuthContext";
 
 function Homepage() {
+  const { user, checkLogin } = useAuth();
+
+  useEffect(() => {
+    checkLogin();
+  }, []);
+
+  usePageTitleByPath();
   return (
     <>
       <Navbar />
+      <Test />
       <div className={styles.homepageContainer}>
         <div className={styles.banner}>
           <div className={styles.backgroundImage}></div>
@@ -18,7 +31,8 @@ function Homepage() {
         <div className={styles.display}>
           <div className={styles.item}>
             <div className={styles.contentLeft}>
-              <h2>Vũ trụ tướng Liên Minh Huyền Thoại</h2>
+              {/* <h2>Vũ trụ tướng Liên Minh Huyền Thoại</h2> */}
+              <h2>{user?.username}</h2>
               <p>
                 Mỗi vị tướng trong Liên Minh Huyền Thoại là một biểu tượng –
                 mang theo câu chuyện, sức mạnh và phong cách chiến đấu riêng
@@ -44,7 +58,7 @@ function Homepage() {
             </div>
             <div className={styles.contentRight}>
               <Link
-                to="/area"
+                to="/region"
                 className={`${styles.background} ${styles.bg2}`}
               ></Link>
             </div>

@@ -3,12 +3,14 @@ import ChampionList from "../../components/ChampionList/ChampionList";
 import Navbar from "../../components/Navbar/Navbar";
 import SearchChamp from "../../components/SearchChamp/SearchChamp";
 import "./Champion.css";
+import usePageTitleByPath from "../../utils/usePageTitleByPath";
 
 function Champion() {
   const [searchChamp, setSearchChamp] = useState("");
   const [tag, setTag] = useState("All");
   const [isOpenSort, setIsOpenSort] = useState(false);
 
+  usePageTitleByPath();
   function handleOpenSort() {
     setIsOpenSort((isOpenSort) => !isOpenSort);
   }

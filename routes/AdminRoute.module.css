@@ -1,0 +1,42 @@
+/* AdminRoute.module.css */
+
+.container {
+  background: radial-gradient(circle at top center, #2a2a2a 0%, #121212 100%);
+  margin-top: 200px;
+  text-align: center;
+  color: #f39c12; /* màu vàng cam sáng */
+  font-weight: 700;
+  font-size: 30px;
+  padding: 30px;
+  border: 2px solid #f39c12; /* viền vàng cam */
+  border-radius: 12px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 4px 12px rgba(243, 156, 18, 0.5);
+  text-shadow: 0 0 8px rgba(243, 156, 18, 0.7);
+}
+
+.title {
+  margin: 0;
+  font-size: 40px;
+  text-shadow: 0 0 10px rgba(243, 156, 18, 0.9);
+}
+
+.message {
+  font-size: 25px;
+  margin-top: 30px;
+  color: #f1c40f; /* vàng sáng */
+  font-weight: 500;
+  text-shadow: 0 0 6px rgba(241, 196, 15, 0.8);
+}
+
+.loading {
+  text-align: center;
+  margin-top: 250px;
+  font-size: 26px;
+  font-weight: 700;
+  color: #f39c12; /* màu vàng cam */
+  text-shadow: 0 0 12px rgba(243, 156, 18, 0.9);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}

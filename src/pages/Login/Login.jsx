@@ -4,8 +4,10 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import Toast from "../../components/Toast/Toast";
+import usePageTitleByPath from "../../utils/usePageTitleByPath";
 
 function Login() {
+  usePageTitleByPath();
   const [toast, setToast] = useState({
     show: false,
     message: "",
@@ -22,9 +24,10 @@ function Login() {
   });
   const { login } = useAuth();
 
-  function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const success = login(username, password);
+    const success = await login(username, password);
+    console.log("Check", success);
 
     const newErrors = {
       username: username.trim() ? "" : "Tên đăng nhập không được để trống",
@@ -59,7 +62,7 @@ function Login() {
         setToast({ show: false, message: "", type: "error" });
       }, 1500);
     }
-  }
+  };
 
   return (
     <>

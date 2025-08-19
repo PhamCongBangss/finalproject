@@ -1,99 +1,122 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import defaultAvt from "../../public/avtdefault.jpg";
+import axios from "axios";
 
 const AuthContext = createContext();
-
-const predefinedAccounts = [
-  {
-    username: "phamcongbang1234",
-    password: "123456",
-    email: "bangpham10062002",
-  },
-];
+const API_URL = "http://127.0.0.1:3001/api/users";
 
 export function AuthProvider({ children }) {
+  const [loadingUser, setLoadingUser] = useState(true);
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
+    checkLogin();
   }, []);
 
-  useEffect(() => {
-    const existingAccounts = localStorage.getItem("accounts");
-    if (!existingAccounts) {
-      localStorage.setItem("accounts", JSON.stringify(predefinedAccounts));
-    }
-  }, []);
-
-  function login(username, password) {
-    const accounts = JSON.parse(localStorage.getItem("accounts")) || [];
-    const found = accounts.find(
-      (user) => user.username === username && user.password === password
-    );
-    if (found) {
-      setUser(found);
-      localStorage.setItem("user", JSON.stringify(found));
-      return true;
-    }
-    return false;
-  }
-
-  function logout() {
-    setUser(null);
-    localStorage.removeItem("user");
-    navigate("/login");
-  }
-
-  function validateEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  }
-
-  function signup(email, username, password) {
-    const accounts = JSON.parse(localStorage.getItem("accounts")) || [];
-    const existingUser = accounts.find((user) => user.username === username);
-
-    if (existingUser || !validateEmail(email)) {
+  // ✅ Login
+  const login = async (username, password) => {
+    try {
+      const res = await axios.post(`${API_URL}/login`, { username, password });
+      if (res.data.status === "success") {
+        const token = res.data.token;
+        localStorage.setItem("token", token); // Lưu token
+        setUser(res.data.data.user);
+        return true;
+      }
+      return false;
+    } catch (err) {
+      console.error(err.response?.data || err.message);
       return false;
     }
+  };
 
-    const newUser = {
-      username,
-      password,
-      email,
-      fullname: "",
-      phone: "",
-      address: "",
-      avatar: defaultAvt,
-      cart: [],
-    };
-    const updatedAccounts = [...accounts, newUser];
-    localStorage.setItem("accounts", JSON.stringify(updatedAccounts));
-    return true;
-  }
+  // ✅ Signup
+  const signup = async (username, email, password, passwordConfirm) => {
+    try {
+      const res = await axios.post(`${API_URL}/signup`, {
+        username,
+        email,
+        password,
+        passwordConfirm,
+      });
+      if (res.data.status === "success") {
+        const token = res.data.token;
+        localStorage.setItem("token", token); // Lưu token
+        setUser(res.data.data.user);
+        return true;
+      }
+      return false;
+    } catch (err) {
+      console.error(err.response?.data || err.message);
+      return false;
+    }
+  };
 
-  function updateUser(updatedData) {
-    const accounts = JSON.parse(localStorage.getItem("accounts")) || [];
+  // ✅ Logout
+  const logout = () => {
+    localStorage.removeItem("token"); // Xóa token
+    setUser(null);
+    navigate("/login");
+  };
 
-    const updatedAccounts = accounts.map((acc) =>
-      acc.username === user.username ? { ...acc, ...updatedData } : acc
+  // ✅ Check login (protected route)
+  const checkLogin = async () => {
+    setLoadingUser(true);
+    const token = localStorage.getItem("token");
+    if (!token) {
+      setUser(null);
+      setLoadingUser(false);
+      return;
+    }
+
+    try {
+      const res = await axios.get(`${API_URL}/me`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setUser(res.data.data.user);
+    } catch (err) {
+      console.log("Chưa đăng nhập hoặc token hết hạn");
+      setUser(null);
+    } finally {
+      setLoadingUser(false);
+    }
+  };
+
+  // ✅ Update profile (protected)
+  const updateMe = async (updatedData, file) => {
+    const token = localStorage.getItem("token");
+    if (!token) throw new Error("Chưa đăng nhập");
+
+    const formData = new FormData();
+    Object.entries(updatedData).forEach(([key, value]) =>
+      formData.append(key, value)
     );
+    if (file) formData.append("avatar", file);
 
-    const updatedUser = { ...user, ...updatedData };
+    const res = await axios.patch(`${API_URL}/updateMe`, formData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "multipart/form-data",
+      },
+    });
 
-    localStorage.setItem("accounts", JSON.stringify(updatedAccounts));
-    localStorage.setItem("user", JSON.stringify(updatedUser));
-    setUser(updatedUser);
-  }
+    setUser(res.data.data.user); // Cập nhật user trong context
+    return res.data;
+  };
 
   return (
     <AuthContext.Provider
-      value={{ user, login, logout, signup, updateUser, setUser }}
+      value={{
+        user,
+        loadingUser,
+        login,
+        signup,
+        logout,
+        checkLogin,
+        updateMe,
+        setUser,
+      }}
     >
       {children}
     </AuthContext.Provider>

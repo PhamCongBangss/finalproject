@@ -57,6 +57,9 @@ export const CartProvider = ({ children }) => {
 
   const clearCart = () => {
     setCart([]);
+    if (user) {
+      localStorage.removeItem(`cart_${user.username}`);
+    }
   };
 
   function buyProduct({ fullname, phone, address, note, cartItems }) {

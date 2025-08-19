@@ -1,11 +1,18 @@
 import Navbar from "../../components/Navbar/Navbar";
-import styles from "./Area.module.css";
+import styles from "./Region.module.css";
 import { useLang } from "../../context/LanguageContext";
 import dictionaryArea from "../../utils/dictionaryArea";
+import usePageTitleByPath from "../../utils/usePageTitleByPath";
+import { useEffect } from "react";
 
-function Area() {
+function Region() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const { lang } = useLang();
   const t = dictionaryArea[lang];
+
+  usePageTitleByPath();
 
   const regions = [
     { key: "demacia", img: "../../../public/demacia.jpg" },
@@ -41,4 +48,4 @@ function Area() {
   );
 }
 
-export default Area;
+export default Region;

@@ -6,38 +6,44 @@ import Toast from "../../components/Toast/Toast";
 function Profile() {
   const fileInputRef = useRef();
   const [isShowToast, setIsShowToast] = useState(false);
-  const { user, updateUser } = useAuth();
+  const { user, checkLogin, updateMe } = useAuth();
   const [currentUser, setCurrentUser] = useState(null);
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  useEffect(() => {
+    checkLogin();
+  }, []);
 
   useEffect(() => {
     setCurrentUser({
       username: user?.username || "",
-      fullname: user?.fullname || "",
+      fullName: user?.fullName || "",
       email: user?.email || "",
       phone: user?.phone || "",
       address: user?.address || "",
-      avatar: user?.avatar || "",
+      avatar: user?.avatar
+        ? `http://localhost:3001/img/users/${user.avatar}`
+        : "",
     });
   }, [user]);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        const base64data = reader.result;
-
-        setCurrentUser((prev) => ({
-          ...prev,
-          avatar: base64data,
-        }));
-      };
-      reader.readAsDataURL(file);
+      if (currentUser.avatar && selectedFile) {
+        URL.revokeObjectURL(currentUser.avatar);
+      }
+      setSelectedFile(file);
+      setCurrentUser((prev) => ({
+        ...prev,
+        avatar: URL.createObjectURL(file),
+      }));
     }
   };
 
   function handleChange(e) {
     const { name, value } = e.target;
+    console.log(currentUser);
     setCurrentUser((prev) => ({
       ...prev,
       [name]: value,
@@ -45,15 +51,23 @@ function Profile() {
   }
 
   function handleSave() {
-    const { fullname, email, phone, address, avatar } = currentUser;
-    updateUser({ fullname, email, phone, address, avatar });
-    setIsShowToast(true);
-    setTimeout(() => {
-      setIsShowToast(false);
-    }, 1000);
+    console.log(currentUser.avatar);
+    console.log(user.avatar);
+    const { fullName, email, phone, address } = currentUser;
+
+    updateMe({ fullName, email, phone, address }, selectedFile)
+      .then(() => {
+        setIsShowToast(true);
+        setTimeout(() => {
+          setIsShowToast(false);
+        }, 1000);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }
 
-  if (!currentUser) return;
+  if (!currentUser) return null;
   return (
     <div className={styles.profileDisplay}>
       <p className={styles.myProfileText}>Hồ sơ của tôi</p>
@@ -76,10 +90,10 @@ function Profile() {
           <div className={styles.info}>
             <p>Họ và tên</p>
             <input
-              value={currentUser.fullname}
+              value={currentUser.fullName}
               className={styles.inputInfo}
               type="text"
-              name="fullname"
+              name="fullName"
               onChange={handleChange}
             />
           </div>

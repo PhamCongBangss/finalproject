@@ -1,16 +1,47 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./CartDrawer.module.css";
-import products from "../../utils/products";
 import { FaTrash } from "react-icons/fa";
 import { useCart } from "../../context/CartContext";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const CartDrawer = ({ isOpen, onClose }) => {
   const { cart, deleteItem, updateQuantity } = useCart();
-  const getProduct = (id) => products.find((product) => product.id === id);
+  const [productsData, setProductsData] = useState({});
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      setLoading(true);
+      try {
+        const dataPromises = cart.map((item) =>
+          axios.get(`http://localhost:3001/api/products/${item.id}`)
+        );
+        const responses = await Promise.all(dataPromises);
+
+        const productsMap = {};
+        responses.forEach((res) => {
+          const product = res.data.data.product;
+          productsMap[product._id] = product;
+        });
+        setProductsData(productsMap);
+      } catch (err) {
+        console.error("Error fetching products:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (cart.length > 0) {
+      fetchProducts();
+    } else {
+      setProductsData({});
+      setLoading(false);
+    }
+  }, [cart]);
 
   const totalPrice = cart.reduce((total, item) => {
-    const product = getProduct(item.id);
+    const product = productsData[item.id];
     if (!product) return total;
     return total + product.price * item.quantity;
   }, 0);
@@ -31,16 +62,18 @@ const CartDrawer = ({ isOpen, onClose }) => {
         </div>
 
         <div className={styles.content}>
-          {cart.length === 0 ? (
+          {loading ? (
+            <p>Đang tải...</p>
+          ) : cart.length === 0 ? (
             <p className={styles.empty}>Không có sản phẩm nào trong giỏ.</p>
           ) : (
-            cart.map((item, index) => {
-              const product = getProduct(item.id);
+            cart.map((item) => {
+              const product = productsData[item.id];
               if (!product) return null;
               return (
-                <div key={index} className={styles.item}>
+                <div key={item.itemId} className={styles.item}>
                   <img
-                    src={product.image}
+                    src={`http://localhost:3001/img/products/${product.image}`}
                     alt={product.name}
                     className={styles.itemImage}
                   />
@@ -71,9 +104,6 @@ const CartDrawer = ({ isOpen, onClose }) => {
                         <FaTrash />
                       </button>
                     </div>
-                    {item.size && (
-                      <p className={styles.size}>Size: {item.size}</p>
-                    )}
                   </div>
                 </div>
               );

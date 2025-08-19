@@ -2,7 +2,7 @@ const products = [
   {
     id: 1,
     name: "Nón Lux Cầu Vồng",
-    price: 400000,
+    price: 297000,
     image: "../../../public/hat.webp",
     tag: "hat",
     size: false,
@@ -12,7 +12,7 @@ const products = [
   {
     id: 2,
     name: "Nón Teemo",
-    price: 400000,
+    price: 425000,
     image: "../../../public/teemohat.webp",
     tag: "hat",
     size: false,
@@ -22,7 +22,7 @@ const products = [
   {
     id: 3,
     name: "Nón Poro",
-    price: 400000,
+    price: 214000,
     image: "../../../public/porohat.webp",
     tag: "hat",
     size: false,
@@ -32,7 +32,7 @@ const products = [
   {
     id: 4,
     name: "Nón Beemo",
-    price: 400000,
+    price: 387000,
     image: "../../../public/beemohat.webp",
     tag: "hat",
     size: false,
@@ -42,7 +42,7 @@ const products = [
   {
     id: 5,
     name: "Nón Tibbers",
-    price: 400000,
+    price: 458000,
     image: "../../../public/tibbershat.webp",
     tag: "hat",
     size: false,
@@ -52,7 +52,7 @@ const products = [
   {
     id: 6,
     name: "Nón Kindred Sói và Cừu",
-    price: 400000,
+    price: 312000,
     image: "../../../public/kindredhat.webp",
     tag: "hat",
     size: false,
@@ -62,7 +62,7 @@ const products = [
   {
     id: 7,
     name: "Nón Sett HeartSteal",
-    price: 400000,
+    price: 249000,
     image: "../../../public/setthat.webp",
     tag: "hat",
     size: false,
@@ -72,7 +72,7 @@ const products = [
   {
     id: 8,
     name: "Mô Hình Teemo Hoa Linh Lục Địa",
-    price: 400000,
+    price: 441000,
     image: "../../../public/teemofigure.webp",
     tag: "figure",
     size: false,
@@ -82,7 +82,7 @@ const products = [
   {
     id: 9,
     name: "Mô Hình Tahmn Kench Thần Tài",
-    price: 400000,
+    price: 266000,
     image: "../../../public/tahmfigure.webp",
     tag: "figure",
     size: false,
@@ -92,7 +92,7 @@ const products = [
   {
     id: 10,
     name: "Mô Hình Lux Sứ Thanh Hoa",
-    price: 400000,
+    price: 319000,
     image: "../../../public/figurelux.webp",
     tag: "figure",
     size: false,
@@ -102,7 +102,7 @@ const products = [
   {
     id: 11,
     name: "Mô Hình Yone",
-    price: 400000,
+    price: 399000,
     image: "../../../public/yonefigure.webp",
     tag: "figure",
     size: false,
@@ -112,7 +112,7 @@ const products = [
   {
     id: 12,
     name: "Mô Hình Sylas",
-    price: 400000,
+    price: 280000,
     image: "../../../public/sylasfigure.webp",
     tag: "figure",
     size: false,
@@ -122,7 +122,7 @@ const products = [
   {
     id: 13,
     name: "Mô Hình Twisted Fate",
-    price: 400000,
+    price: 203000,
     image: "../../../public/tffigure.webp",
     tag: "figure",
     size: false,
@@ -132,7 +132,7 @@ const products = [
   {
     id: 14,
     name: "Áo Thun Sivir Giao Pizza",
-    price: 400000,
+    price: 481000,
     image: "../../../public/ao1.webp",
     tag: "tee",
     size: true,
@@ -142,7 +142,7 @@ const products = [
   {
     id: 15,
     name: "Áo Thun Kindred Hoa Linh Lục Địa",
-    price: 400000,
+    price: 227000,
     image: "../../../public/ao2.webp",
     tag: "tee",
     size: true,
@@ -152,7 +152,7 @@ const products = [
   {
     id: 16,
     name: "Áo Thun Teemo Tiểu Quỷ",
-    price: 400000,
+    price: 357000,
     image: "../../../public/ao3.webp",
     tag: "tee",
     size: true,
@@ -162,7 +162,7 @@ const products = [
   {
     id: 17,
     name: "Áo Thun Siêu Phẩm Lucian",
-    price: 400000,
+    price: 276000,
     image: "../../../public/ao4.webp",
     tag: "tee",
     size: true,
@@ -172,7 +172,7 @@ const products = [
   {
     id: 18,
     name: "Áo Khoác Biệt Đội Siêu Thú",
-    price: 400000,
+    price: 491000,
     image: "../../../public/ao5.webp",
     tag: "jacket",
     size: true,
@@ -182,7 +182,7 @@ const products = [
   {
     id: 19,
     name: "Áo Khoác Thresh Hoa Linh Lục Địa",
-    price: 400000,
+    price: 434000,
     image: "../../../public/ao6.webp",
     tag: "jacket",
     size: true,

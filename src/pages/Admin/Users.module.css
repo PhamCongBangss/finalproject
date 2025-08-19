@@ -1,0 +1,267 @@
+.container {
+  padding: 10px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h2 {
+  margin-bottom: 15px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  border: 1px solid #ddd;
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.table th {
+  background-color: #1abc9c;
+  color: white;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f7f9f9;
+}
+
+.active {
+  color: green;
+  font-weight: 600;
+}
+
+.inactive {
+  color: #888;
+  font-style: italic;
+}
+
+.editBtn,
+.deleteBtn,
+.saveBtn,
+.cancelBtn {
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  margin-right: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.editBtn {
+  background-color: #3498db;
+  color: white;
+  box-shadow: 0 2px 5px rgba(52, 152, 219, 0.4);
+}
+
+.editBtn:hover {
+  background-color: #217dbb;
+  box-shadow: 0 4px 12px rgba(33, 125, 187, 0.6);
+}
+
+.deleteBtn {
+  background-color: #e74c3c;
+  color: white;
+  box-shadow: 0 2px 5px rgba(231, 76, 60, 0.4);
+}
+
+.deleteBtn:hover {
+  background-color: #c0392b;
+  box-shadow: 0 4px 12px rgba(192, 57, 43, 0.6);
+}
+
+/* Modal */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal {
+  background-color: white;
+  padding: 24px 30px;
+  border-radius: 12px;
+  width: 360px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+}
+
+.modal h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.modal label {
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+}
+
+.modal input[type="text"],
+.modal input[type="email"],
+.modal input[type="password"] {
+  padding: 8px 12px;
+  margin-top: 6px;
+  border-radius: 6px;
+  border: 1.5px solid #ccc;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modal input[type="text"]:focus,
+.modal input[type="email"]:focus,
+.modal input[type="password"]:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 8px rgba(52, 152, 219, 0.6);
+}
+
+.checkboxLabel {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.modalActions {
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.error {
+  color: red;
+  margin-top: 6px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.statusGroup {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+}
+
+.statusBtn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 2px solid #ccc;
+  background-color: white;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.statusBtn:hover {
+  border-color: #3498db;
+}
+
+.activeStatus {
+  background-color: #27ae60;
+  border-color: #27ae60;
+  color: white;
+}
+
+.inactiveStatus {
+  background-color: #e74c3c;
+  border-color: #e74c3c;
+  color: white;
+}
+
+.createBtn {
+  margin-bottom: 15px;
+  padding: 8px 16px;
+  background-color: #27ae60;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.createBtn:hover {
+  background-color: #219150;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 30px;
+}
+
+.pageBtn {
+  padding: 7px 14px;
+  border-radius: 5px;
+  border: 1px solid #aaa;
+  background-color: white;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+
+.pageBtn:hover:not(:disabled) {
+  background-color: #e5e5e5;
+}
+
+.pageBtn:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.activePageBtn {
+  background-color: #2d89ff;
+  color: white;
+  border-color: #2d89ff;
+  cursor: default;
+}
+
+.resetBtn {
+  padding: 6px 14px;
+  border: none;
+  background: linear-gradient(135deg, #26a69a, #00897b);
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 5px rgba(38, 166, 154, 0.3);
+}
+
+.resetBtn:hover {
+  background: linear-gradient(135deg, #00897b, #00695c);
+  box-shadow: 0 4px 10px rgba(38, 166, 154, 0.5);
+  transform: translateY(-1px);
+}
+
+.resetBtn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(38, 166, 154, 0.3);
+}
+
+.table th:nth-child(5),
+.table td:nth-child(5) {
+  width: 300px; /* Bạn có thể giảm xuống 150px hoặc 120px tùy ý */
+}

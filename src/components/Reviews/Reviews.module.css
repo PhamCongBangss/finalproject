@@ -1,0 +1,162 @@
+.reviewsContainer {
+  margin-top: 30px;
+  padding: 20px;
+  border-top: 2px solid #ffe0c2;
+  grid-column: 1 / -1;
+  font-family: "Roboto", sans-serif;
+  color: #fff;
+  background: linear-gradient(135deg, #2a2a2a 0%, #121212 100%);
+  border-radius: 12px;
+}
+
+.reviewsContainer h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #ff8c00, #ff5e00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.reviewForm {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.starRating {
+  display: flex;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.starRatingSmall {
+  display: flex;
+  gap: 4px;
+}
+
+.starIcon {
+  font-size: 28px;
+  color: #ccc;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.starIcon.filled {
+  color: #ffb400;
+}
+
+.starIcon:hover {
+  transform: scale(1.2);
+}
+
+.reviewForm textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 12px;
+  border: 1px solid #ffb366;
+  border-radius: 8px;
+  background-color: #1e1e1e;
+  color: #fff;
+  font-size: 14px;
+  resize: vertical;
+}
+
+.reviewForm button {
+  background: linear-gradient(90deg, #ff8c00, #ff5e00);
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 180px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 10px rgba(255, 94, 0, 0.3);
+}
+
+.reviewForm button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.reviewList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.reviewItem {
+  padding: 12px 0;
+  border-bottom: 1px solid #333;
+  color: #fff;
+}
+
+.reviewHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.reviewHeader strong {
+  font-size: 16px;
+  color: #ff9800;
+  text-transform: uppercase;
+}
+
+.reviewHeader .starRatingSmall .starIcon {
+  font-size: 20px;
+}
+
+.reviewItem p {
+  font-size: 14px;
+  color: #ddd;
+  line-height: 1.5;
+  margin-top: 4px;
+}
+
+/* Container tên + thời gian */
+.reviewHeader .userInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* khoảng cách giữa tên và thời gian */
+}
+
+/* Tên reviewer */
+.reviewHeader strong {
+  font-size: 16px;
+  color: #ff9800;
+  text-transform: uppercase;
+}
+
+/* Thời gian review */
+.reviewHeader .timeAgo {
+  font-size: 12px;
+  color: #aaa;
+  font-style: italic;
+}
+
+.login {
+  color: #ff9800;
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 12px;
+  background-color: #2a2a2a;
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out; /* thời gian dài hơn và mượt */
+}
+
+.login:hover {
+  color: #fff; /* đổi màu chữ khi hover */
+  background-color: #ff9800; /* đổi nền khi hover */
+  transform: translateY(-2px); /* hơi nâng lên */
+  box-shadow: 0 4px 10px rgba(255, 152, 0, 0.4);
+}

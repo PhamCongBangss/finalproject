@@ -150,3 +150,107 @@
   color: white;
   border-color: #f97316;
 }
+
+.reviewSection {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #444;
+}
+
+.reviewForm {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.reviewForm select,
+.reviewForm textarea {
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  background-color: #1e1e1e;
+  color: white;
+}
+
+.reviewForm textarea {
+  min-height: 80px;
+}
+
+.submitReviewButton {
+  background: linear-gradient(90deg, #ff8c00, #ff5e00);
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.reviewList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.reviewItem {
+  background: #1e1e1e;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.ratingSection {
+  margin: 20px 0;
+}
+.stars {
+  display: flex;
+  gap: 8px;
+  cursor: pointer;
+}
+.starFilled {
+  color: #ffca28;
+  fill: #ffca28;
+}
+.starEmpty {
+  color: #ccc;
+  fill: #ccc;
+}
+
+.buyButton {
+  background: #ff5722;
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.buyButton:hover {
+  background: #e64a19;
+}
+
+.productRating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 12px;
+}
+
+.productRating .starIcon {
+  color: #ffb400;
+  font-size: 20px;
+}
+
+.productRating .ratingValue {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ff9800;
+}
+
+.productName {
+  display: flex;
+  gap: 40px;
+}

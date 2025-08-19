@@ -42,7 +42,7 @@ function ChampionList({ searchChamp, tag }) {
     setIsOpenModal(false);
   }
 
-  if (!champion) return <p>Loading...</p>;
+  if (!champion) return;
 
   const champions = champion.filter((champ) => {
     const matchSearch =

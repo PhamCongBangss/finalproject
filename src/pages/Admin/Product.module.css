@@ -1,0 +1,234 @@
+.container {
+  padding: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: black;
+}
+
+.title {
+  font-size: 24px;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+.table th,
+.table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.table th {
+  background-color: #f5f5f5;
+  font-weight: 600;
+  color: #444;
+}
+
+.productImg {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.description {
+  max-width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Nút hành động */
+.btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  margin-right: 6px;
+  transition: background 0.3s;
+}
+
+.detailBtn {
+  background-color: #2196f3;
+}
+.detailBtn:hover {
+  background-color: #1976d2;
+}
+
+.editBtn {
+  background-color: #ff9800;
+}
+.editBtn:hover {
+  background-color: #e68900;
+}
+
+.deleteBtn {
+  background-color: #f44336;
+}
+.deleteBtn:hover {
+  background-color: #d32f2f;
+}
+
+/* Modal */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 500px;
+  max-width: 90%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.modal h3 {
+  margin-bottom: 15px;
+  font-size: 20px;
+  color: #333;
+}
+
+.modalImg {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border-radius: 6px;
+}
+
+.modal p {
+  margin: 8px 0;
+  font-size: 16px;
+  color: #444;
+}
+
+.closeBtn {
+  margin-top: 15px;
+  padding: 8px 16px;
+  background: #666;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.closeBtn:hover {
+  background: #444;
+}
+
+.container {
+  padding: 20px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1abc9c;
+  margin-bottom: 20px;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.table th,
+.table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.table th {
+  background: #1abc9c;
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.productImg {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.description {
+  max-width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.actionBtns {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.viewBtn {
+  padding: 5px 10px;
+  border: none;
+  background-color: #4caf50; /* xanh lá */
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.viewBtn:hover {
+  background-color: #388e3c;
+}
+
+.editBtn {
+  padding: 5px 10px;
+  border: none;
+  background-color: #ff9800; /* cam */
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.editBtn:hover {
+  background-color: #f57c00;
+}
+
+.deleteBtn {
+  padding: 5px 10px;
+  border: none;
+  background-color: #f44336; /* đỏ */
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.deleteBtn:hover {
+  background-color: #d32f2f;
+}

@@ -2,13 +2,16 @@ import { FaTrash } from "react-icons/fa";
 import Navbar from "../../components/Navbar/Navbar";
 import { useCart } from "../../context/CartContext";
 import styles from "./Checkout.module.css";
-import products from "../../utils/products";
 import { useAuth } from "../../context/AuthContext";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Toast from "../../components/Toast/Toast";
+import usePageTitleByPath from "../../utils/usePageTitleByPath";
+import axios from "axios";
 
 function Checkout() {
+  const token = localStorage.getItem("token");
+  usePageTitleByPath();
   const { user } = useAuth();
   const navigate = useNavigate();
 
@@ -18,28 +21,105 @@ function Checkout() {
     type: "success",
   });
 
-  const { cart, updateQuantity, deleteItem, buyProduct, clearCart } = useCart();
+  const { cart, updateQuantity, deleteItem, clearCart } = useCart();
 
-  const [fullname, setFullname] = useState("");
+  const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [note, setNote] = useState("");
 
+  const [productsData, setProductsData] = useState({});
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     if (user) {
-      setFullname(user.fullname || "");
+      setFullName(user.fullName || "");
       setPhone(user.phone || "");
       setAddress(user.address || "");
     }
   }, [user]);
 
-  const getProduct = (id) => products.find((product) => product.id === id);
+  useEffect(() => {
+    const fetchProducts = async () => {
+      setLoading(true);
+      try {
+        const promises = cart.map((item) =>
+          axios.get(`http://localhost:3001/api/products/${item.id}`)
+        );
+        const responses = await Promise.all(promises);
+        const dataMap = {};
+        responses.forEach((res) => {
+          const product = res.data.data.product;
+          dataMap[product._id] = product;
+        });
+        setProductsData(dataMap);
+      } catch (err) {
+        console.error("Error fetching products:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (cart.length > 0) fetchProducts();
+    else {
+      setProductsData({});
+      setLoading(false);
+    }
+  }, [cart]);
 
   const totalPrice = cart.reduce((total, item) => {
-    const product = getProduct(item.id);
+    const product = productsData[item.id];
     if (!product) return total;
     return total + product.price * item.quantity;
   }, 0);
+
+  const handleCheckout = async () => {
+    if (cart.length === 0) {
+      setToast({ show: true, message: "Giỏ hàng trống", type: "error" });
+      setTimeout(
+        () => setToast({ show: false, message: "", type: "error" }),
+        1500
+      );
+      return;
+    }
+
+    try {
+      const res = await axios.post(
+        "http://localhost:3001/api/orders",
+        {
+          fullName,
+          phone,
+          address,
+          note,
+          cartItems: cart.map((item) => ({
+            id: item.id,
+            quantity: item.quantity,
+          })),
+        },
+        {
+          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      setToast({ show: true, message: "Đặt hàng thành công", type: "success" });
+      clearCart();
+      setTimeout(
+        () => setToast({ show: false, message: "", type: "success" }),
+        1500
+      );
+      navigate("/shop");
+    } catch (err) {
+      console.error(err.response || err.message);
+      setToast({ show: true, message: "Đặt hàng thất bại", type: "error" });
+      setTimeout(
+        () => setToast({ show: false, message: "", type: "error" }),
+        1500
+      );
+    }
+  };
 
   return (
     <>
@@ -48,50 +128,54 @@ function Checkout() {
         <div className={styles.cartInfo}>
           <p className={styles.title}>Giỏ hàng của bạn</p>
           <div className={styles.cartInfo}>
-            {cart.map((cartItem, index) => {
-              const product = getProduct(cartItem.id);
-              const price = cartItem.quantity * product.price;
-              return (
-                <div key={index} className={styles.cartItem}>
-                  <span>{index + 1}</span>
-                  <img
-                    className={styles.itemImg}
-                    src={product.image}
-                    alt={product.name}
-                  />
-                  <div className={styles.itemDetail}>
-                    <p className={styles.itemName}>{product.name}</p>
-                    {cartItem.size && (
-                      <p className={styles.size}>Size: {cartItem.size}</p>
-                    )}
-                  </div>
-                  <div className={styles.quantityControls}>
+            {loading ? (
+              <p>Đang tải...</p>
+            ) : cart.length === 0 ? (
+              <p className={styles.empty}>Không có sản phẩm nào trong giỏ.</p>
+            ) : (
+              cart.map((cartItem, index) => {
+                const product = productsData[cartItem.id];
+                if (!product) return null;
+                const price = cartItem.quantity * product.price;
+                return (
+                  <div key={cartItem.itemId} className={styles.cartItem}>
+                    <span>{index + 1}</span>
+                    <img
+                      className={styles.itemImg}
+                      src={`http://localhost:3001/img/products/${product.image}`}
+                      alt={product.name}
+                    />
+                    <div className={styles.itemDetail}>
+                      <p className={styles.itemName}>{product.name}</p>
+                    </div>
+                    <div className={styles.quantityControls}>
+                      <button
+                        onClick={() => updateQuantity(cartItem.itemId, -1)}
+                        className={styles.qtyBtn}
+                      >
+                        -
+                      </button>
+                      <span className={styles.qty}>{cartItem.quantity}</span>
+                      <button
+                        onClick={() => updateQuantity(cartItem.itemId, 1)}
+                        className={styles.qtyBtn}
+                      >
+                        +
+                      </button>
+                    </div>
+                    <p className={styles.price}>
+                      {`${price.toLocaleString()} VND`}
+                    </p>
                     <button
-                      onClick={() => updateQuantity(cartItem.itemId, -1)}
-                      className={styles.qtyBtn}
+                      onClick={() => deleteItem(cartItem.itemId)}
+                      className={styles.deteleBtn}
                     >
-                      -
-                    </button>
-                    <span className={styles.qty}>{cartItem.quantity}</span>
-                    <button
-                      onClick={() => updateQuantity(cartItem.itemId, 1)}
-                      className={styles.qtyBtn}
-                    >
-                      +
+                      <FaTrash />
                     </button>
                   </div>
-                  <p className={styles.price}>
-                    {`${price.toLocaleString()} VND`}
-                  </p>
-                  <button
-                    onClick={() => deleteItem(cartItem.itemId)}
-                    className={styles.deteleBtn}
-                  >
-                    <FaTrash />
-                  </button>
-                </div>
-              );
-            })}
+                );
+              })
+            )}
           </div>
           <div className={styles.total}>
             Tổng cộng: {totalPrice.toLocaleString()} VND
@@ -103,8 +187,8 @@ function Checkout() {
           <div className={styles.shipInfo}>
             <p className={styles.optionTitle}>Họ và tên</p>
             <input
-              value={fullname}
-              onChange={(e) => setFullname(e.target.value)}
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
               className={styles.inputInfo}
             />
           </div>
@@ -133,22 +217,7 @@ function Checkout() {
             />
           </div>
 
-          <button
-            onClick={() => {
-              setToast({
-                show: true,
-                message: "Đặt hàng thành công",
-                type: "success",
-              });
-              setTimeout(() => {
-                buyProduct({ fullname, phone, address, note, cartItems: cart });
-                clearCart();
-                setToast({ show: false, message: "", type: "error" });
-                navigate("/shop");
-              }, 1000);
-            }}
-            className={styles.checkOutBtns}
-          >
+          <button onClick={handleCheckout} className={styles.checkOutBtns}>
             Đặt hàng
           </button>
         </div>

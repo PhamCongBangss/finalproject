@@ -52,3 +52,13 @@
   background-color: #ffd900a1;
   color: black;
 }
+
+.info {
+  position: relative;
+}
+
+.eye {
+  position: absolute;
+  top: 45%;
+  right: 10px;
+}
